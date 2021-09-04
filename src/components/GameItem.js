@@ -1,11 +1,25 @@
 import React from 'react';
+import GameDetail from './GameDetail';
 
-const GameItem = (props) => {
+const GameItem = ({ game, selectedGame, onHoverSelect }) => {
 
-    const { title } = props
+    const styleList = {
+        margin: "0.5rem 0",
+        cursor: 'pointer'
+    }
+
+    const handleHover = () => {
+        onHoverSelect(game)
+    }
+
 
     return (
-        <li>{title}</li>
+        <div onMouseOver={handleHover}>
+            <li style={styleList}>{game.title}</li>
+            {
+                selectedGame === game ? <GameDetail selectedGame={selectedGame} /> : null
+            }
+        </div>
     )
 } 
 

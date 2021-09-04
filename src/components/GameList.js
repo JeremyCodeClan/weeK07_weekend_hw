@@ -1,15 +1,16 @@
 import React from 'react';
 import GameItem from './GameItem';
 
-const GameList = ({ freeGames }) => {
+const GameList = ({ freeGames, selectedGame, onHoverSelect }) => {
 
-    const gameLists = freeGames.map((game) => {
-        return <GameItem title={game.title} />
+
+    const gameLists = freeGames.map((game, index) => {
+        return <GameItem game={game} key={index} selectedGame={selectedGame} onHoverSelect={onHoverSelect} />
     });
 
     return (
         <div>
-            <h2>I am a game!</h2>
+            <h2>I am a game item!</h2>
             <ul>
                 {gameLists}
             </ul>

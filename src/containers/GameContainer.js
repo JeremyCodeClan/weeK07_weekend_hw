@@ -4,12 +4,15 @@ const api_key = process.env.REACT_APP_API_KEY;
 
 const GameContainer = () => {
 
-    const [freeGames, SetFreeGames] = useState([])
+    const [freeGames, SetFreeGames] = useState([]);
+    const [selectedGame, SetSelectedGame] = useState(null);
 
+    // run api function
     useEffect(() => {
         getFreeGames();
     }, [])
 
+    // get api function
     const getFreeGames = () => {
         fetch("https://free-to-play-games-database.p.rapidapi.com/api/games", 
         {
@@ -24,10 +27,15 @@ const GameContainer = () => {
         .catch(err => console.error(err))
     }
 
+    // event functions
+    const onHoverSelect = (game) => {
+        SetSelectedGame(game);
+    }
+
     return (
         <>
-            <h1>I am game container!</h1>
-            <GameList freeGames={freeGames} />
+            <h1>I am a game container!</h1>
+            <GameList freeGames={freeGames} selectedGame={selectedGame} onHoverSelect={onHoverSelect} />
         </>
     )
 };
