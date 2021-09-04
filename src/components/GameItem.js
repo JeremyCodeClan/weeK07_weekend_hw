@@ -1,7 +1,7 @@
 import React from 'react';
 import GameDetail from './GameDetail';
 
-const GameItem = ({ game, selectedGame, onHoverSelect }) => {
+const GameItem = ({ game, selectedGame, onHoverSelect, videoRef, imageRef }) => {
 
     const styleList = {
         margin: "0.5rem 0",
@@ -12,12 +12,11 @@ const GameItem = ({ game, selectedGame, onHoverSelect }) => {
         onHoverSelect(game)
     }
 
-
     return (
-        <div onMouseOver={handleHover}>
+        <div onClick={handleHover}>
             <li style={styleList}>{game.title}</li>
             {
-                selectedGame === game ? <GameDetail selectedGame={selectedGame} /> : null
+                selectedGame === game ? <GameDetail selectedGame={selectedGame} videoRef={videoRef} imageRef={imageRef} /> : null
             }
         </div>
     )
