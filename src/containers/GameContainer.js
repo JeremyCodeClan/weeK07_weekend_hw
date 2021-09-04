@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-const api_key = process.env.REACT_APP_API_KEY
+import GameList from '../components/GameList';
+const api_key = process.env.REACT_APP_API_KEY;
 
 const GameContainer = () => {
 
@@ -19,16 +20,14 @@ const GameContainer = () => {
             }
         })
         .then(res => res.json())
-        .then(data => {
-            SetFreeGames(data);})
+        .then(data => SetFreeGames(data))
         .catch(err => console.error(err))
     }
-
-    console.log(freeGames);
 
     return (
         <>
             <h1>I am game container!</h1>
+            <GameList freeGames={freeGames} />
         </>
     )
 };

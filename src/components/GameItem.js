@@ -1,8 +1,11 @@
 import React from 'react';
 
-const GameItem = () => {
+const GameItem = (props) => {
+
+    const { title } = props
+
     return (
-        <h3>I am a game!</h3>
+        <li>{title}</li>
     )
 } 
 
