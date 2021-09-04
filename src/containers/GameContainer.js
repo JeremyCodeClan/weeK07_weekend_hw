@@ -7,13 +7,14 @@ const GameContainer = () => {
 
     const [freeGames, SetFreeGames] = useState([]);
     const [sortBy, SetSortBy] = useState('');
+    const [category, SetCategory] = useState('');
     const videoRef = useRef('');
     const imageRef = useRef('');
 
     // run api function
     useEffect(() => {
-        getFreeGames(sortBy);
-    }, [sortBy])
+        getFreeGames(sortBy, category);
+    }, [sortBy, category])
 
     const addVideoMap = (data) => {
         data.map((addVideo) => {
@@ -24,8 +25,8 @@ const GameContainer = () => {
     }
 
     // get api function
-    const getFreeGames = (sortBy) => {
-            fetch(`https://free-to-play-games-database.p.rapidapi.com/api/games?sort-by=${sortBy}`, 
+    const getFreeGames = (sortBy, category) => {
+            fetch(`https://free-to-play-games-database.p.rapidapi.com/api/games?${sortBy}${category}`, 
             {   "method": "GET", 
                 "headers":{
                 "x-rapidapi-host": "free-to-play-games-database.p.rapidapi.com",
@@ -43,7 +44,7 @@ const GameContainer = () => {
                 videoRef={videoRef}
                 imageRef={imageRef}
             />
-            <GameQueryOptions SetSortBy={SetSortBy} />
+            <GameQueryOptions SetSortBy={SetSortBy} SetCategory={SetCategory} />
         </>
     )
 };
