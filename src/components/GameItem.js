@@ -14,9 +14,8 @@ const GameItem = ({ game, selectedGame, onHoverSelect, videoRef, imageRef }) => 
 
     return (
         <div onClick={handleHover}>
-            <li style={styleList}>{game.title}</li>
             {
-                selectedGame === game ? <GameDetail selectedGame={selectedGame} videoRef={videoRef} imageRef={imageRef} /> : null
+                selectedGame === game ? <GameDetail selectedGame={selectedGame} videoRef={videoRef} imageRef={imageRef} /> : <li style={styleList}>{game.title}</li>
             }
         </div>
     )
