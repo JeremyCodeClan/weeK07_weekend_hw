@@ -22,7 +22,7 @@ const GameContainer = () => {
     useEffect(() => {
         // https://stackoverflow.com/questions/53071774/reactjs-delay-onchange-while-typing
         // request delay api on purpose
-        const timeOutId = setTimeout(() => SetDelaySearch(search), 500);
+        const timeOutId = setTimeout(() => SetDelaySearch(search), 100);
         return () => clearTimeout(timeOutId);
       }, [search]);
 
