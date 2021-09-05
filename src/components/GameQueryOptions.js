@@ -1,6 +1,6 @@
 import React from 'react';
 
-const GameQueryOptions = ({ search, SetSearch, SetSortBy, SetCategory, onChangeSearch }) => {
+const GameQueryOptions = ({ search, SetSearch, SetSortBy, SetCategory }) => {
 
     const onChangeSort = e => SetSortBy(e.target.value);
     const onChangeCategory = e => SetCategory(e.target.value);

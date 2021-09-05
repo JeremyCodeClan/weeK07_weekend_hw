@@ -13,45 +13,26 @@ const GameContainer = () => {
     const [category, SetCategory] = useState('');
     const [search, SetSearch] = useState('');
 
-
     const videoRef = useRef('');
     const imageRef = useRef('');
 
-    // run api function
+    // api call request on conditions
     useEffect(() => {
-        getFreeGames();
+        getSortFreeGames(sortBy, category, search);
     }, [])
     useEffect(() => {
-        if (sortBy === '' && category === '' && search === '') {
-            getSortFreeGames([]);
-            return;
-        }
-        getSortFreeGames(sortBy, category, search);
+        if (sortBy === '' && category === '' && search === '') {getSortFreeGames([]); return;}
+        if (sortBy !== '' || category !== '' || search !== '') getSortFreeGames(sortBy, category, search);
     }, [sortBy, category, search])
 
     // addVideoUrl
     const addVideoMap = (data) => {
         data.map((addVideo) => {
             addVideo.videoUrl = `https://www.freetogame.com/g/${addVideo.id}/videoplayback.webm`
-            return addVideo
-        })
-    }
+            return addVideo;
+        })}
 
     // get api function
-    const getFreeGames = () => {
-        SetSelectedGame(null);
-        fetch(`https://free-to-play-games-database.p.rapidapi.com/api/games?sort-by=alphabetical`, 
-        {   "method": "GET", 
-            "headers":{
-            "x-rapidapi-host": "free-to-play-games-database.p.rapidapi.com",
-            "x-rapidapi-key": api_key}  })
-        .then(res => res.json())
-        .then((data) => { 
-            addVideoMap(data);
-            SetFreeGames(data);
-        })
-        .catch(err => console.error(err))
-    }
     const getSortFreeGames = (sortBy, category, search) => {
         SetSelectedGame(null);
         fetch(`https://free-to-play-games-database.p.rapidapi.com/api/games?${sortBy}${category}`, 
@@ -62,6 +43,7 @@ const GameContainer = () => {
         .then(res => res.json())
         .then((data) => { 
             addVideoMap(data);
+            if (sortBy === '' && category === ''  && search === '') SetFreeGames(data);
             if (search !== '') {
                 let match = [];
                 const matchFnc = (gameLists) => {
@@ -81,24 +63,7 @@ const GameContainer = () => {
     }
 
     // event functions
-    const onClickSelect = (game) => {
-        SetSelectedGame(game);
-    }
-    // const onChangeSearch = (text) => {
-    //     let match = [];
-    //     const matchFnc = (gameLists) => {
-    //         match = gameLists.filter((game) => {
-    //             const regex = new RegExp(`${text}`, "gi");
-    //             return game.title.match(regex);
-    //         })
-    //     }
-    //     if (text.length > 0) {
-    //         if (freeSortGames.length === 0) matchFnc(freeGames)
-    //         if (freeSortGames.length !== 0) matchFnc(freeSortGames)
-    //     }
-    //     SetFreeSortGames(match);
-    //     SetSearch(text);
-    // }
+    const onClickSelect = (game) => SetSelectedGame(game);
     
     return (
         <>
