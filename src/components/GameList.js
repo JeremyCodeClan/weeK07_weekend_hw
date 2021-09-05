@@ -33,9 +33,12 @@ const GameList = ({ selectedGame, onClickSelect, freeGames, freeSortGames, video
                 />
     });
 
+    const listStyle = {
+        marginTop: '25vh'
+    }
+
     return (
-        <div>
-            <h2>I am a game item!</h2>
+        <div style={listStyle}>
             <ul>
                 {gameLists}
             </ul>

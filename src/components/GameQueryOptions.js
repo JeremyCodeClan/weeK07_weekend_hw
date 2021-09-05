@@ -13,37 +13,54 @@ const GameQueryOptions = ({ search, SetSearch, SetSortBy, SetCategory }) => {
         'mmotps', '3d', '2d', 'anime', 'fantasy', 'sci-fi', 'fighting', 'action-rpg', 'action', 
         'military', 'martial-arts', 'flight', 'low-spec', 'tower-defense', 'horror', 'mmorts']
 
-    const styleFixed = {
-        position: 'fixed',
-        top: '5rem',
-        right: '2rem'
-    }
-
     const handleChange = (e) => {
         SetSearch(e.target.value);
+    }
+
+    // style
+    const optionsStyle = {
+        display: 'flex',
+        margin: '0.5rem 0'
+    }
+    const inputStyle = {
+        height: '1.5rem',
+        padding: '0 0.5rem',
+        marginRight: '2rem',
+        border: 'none',
+        borderBottom: '2px solid #f0f0f0',
+        borderColor: '#ff6166',
+        color: '#ff6166',
+        textAlign: 'center',
+        fontSize: '1rem' 
+    }
+    const optionStyle = {
+        padding: '0 0.5rem',
+        borderColor: '#ff6166',
+        color: '#ff6166',
+        borderRadius: '0.5rem',
+        fontSize: '1rem',
+        marginLeft: '0.5rem',
     }
 
     // sort-by category input
     // smallImage name releasedate category
 
     return (
-        <>
-            <div style={styleFixed}>
-                <input type='text' value={search} onChange={handleChange} />
-                <select onChange={onChangeSort}>
-                    <option value=''>Sort-by:</option>
-                    {sortByArr.map((sort, index) => {
-                        return <option value={'sort-by=' + sort} key={index} >{sort}</option>
-                    })}
-                </select>
-                <select onChange={onChangeCategory}>
-                    <option value=''>Categories</option>
-                    {categoryArr.map((category, index) => {
-                        return <option value={'&category=' + category} key={index} >{category}</option>
-                    })}
-                </select>
-            </div>
-        </>
+        <div style={optionsStyle}>
+            <input className='searchInput' style={inputStyle} type='text' placeholder='search a game name' value={search} onChange={handleChange} />
+            <select style={optionStyle} onChange={onChangeSort}>
+                <option style={optionStyle} value=''>Sort-by:</option>
+                {sortByArr.map((sort, index) => {
+                    return <option style={optionStyle} value={'sort-by=' + sort} key={index} >{sort}</option>
+                })}
+            </select>
+            <select style={optionStyle} onChange={onChangeCategory}>
+                <option style={optionStyle} value=''>Categories</option>
+                {categoryArr.map((category, index) => {
+                    return <option style={optionStyle} value={'&category=' + category} key={index} >{category}</option>
+                })}
+            </select>
+        </div>
     )
 }
 

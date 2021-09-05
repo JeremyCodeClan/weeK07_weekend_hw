@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
+import GameHeader from '../components/GameHeader';
 import GameList from '../components/GameList';
-import GameQueryOptions from '../components/GameQueryOptions'
 const api_key = process.env.REACT_APP_API_KEY;
 
 const GameContainer = () => {
@@ -64,11 +64,10 @@ const GameContainer = () => {
 
     // event functions
     const onClickSelect = (game) => SetSelectedGame(game);
-    
+
     return (
         <>
-            <h1>I am a game container!</h1>
-            <GameQueryOptions search={search} SetSearch={SetSearch} SetSortBy={SetSortBy} SetCategory={SetCategory}  />
+            <GameHeader search={search} SetSearch={SetSearch} SetSortBy={SetSortBy} SetCategory={SetCategory} />
             <GameList
                 freeGames={freeGames}
                 freeSortGames={freeSortGames}
