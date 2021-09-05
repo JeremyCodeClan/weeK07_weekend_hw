@@ -1,7 +1,11 @@
 import React from 'react';
 import { AiFillCloseSquare } from "react-icons/ai";
 
-const GameDetail = ({ selectedGame, videoRef, imageRef }) => {
+const GameDetail = ({ selectedGame, onClickCancel, videoRef, imageRef }) => {
+
+    const handleCancel = () => {
+        onClickCancel();
+    }
 
     const detailBlock = {
         margin: '1.5rem auto',
@@ -53,7 +57,9 @@ const GameDetail = ({ selectedGame, videoRef, imageRef }) => {
             <div style={detailStyle}>
                 <div style={titleBlock}>
                     <div style={titleStyle}>{selectedGame.title}</div>
-                    <AiFillCloseSquare style={iconStyle} size={36}/>
+                    <div onClick={handleCancel}>
+                        <AiFillCloseSquare style={iconStyle} size={36}/>
+                    </div>
                 </div>
                 <div>
                     <video controls width="500" height='281' loop ref={videoRef} className='disableView' >

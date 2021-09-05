@@ -8,6 +8,7 @@ const GameContainer = () => {
     const [freeGames, SetFreeGames] = useState([]);
     const [freeSortGames, SetFreeSortGames] = useState([]);
     const [selectedGame, SetSelectedGame] = useState(null);
+    const [selectCancel, SetSelectedCancel] = useState(false);
 
     const [sortBy, SetSortBy] = useState('');
     const [category, SetCategory] = useState('');
@@ -17,13 +18,17 @@ const GameContainer = () => {
     const imageRef = useRef('');
 
     // api call request on conditions
-    useEffect(() => {
-        getSortFreeGames(sortBy, category, search);
-    }, [])
+    useEffect(() => getSortFreeGames(sortBy, category, search), [])
     useEffect(() => {
         if (sortBy === '' && category === '' && search === '') {getSortFreeGames([]); return;}
-        if (sortBy !== '' || category !== '' || search !== '') getSortFreeGames(sortBy, category, search);
+        if (sortBy !== '' || category !== '' || search !== '') {
+            getSortFreeGames(sortBy, category, search);
+        }
     }, [sortBy, category, search])
+    useEffect(() => {
+        if (selectCancel === true) SetSelectedGame(null);
+        SetSelectedGame(!selectedGame);
+    }, [selectCancel])
 
     // addVideoUrl
     const addVideoMap = (data) => {
@@ -41,7 +46,7 @@ const GameContainer = () => {
             "x-rapidapi-host": "free-to-play-games-database.p.rapidapi.com",
             "x-rapidapi-key": api_key}  })
         .then(res => res.json())
-        .then((data) => { 
+        .then((data) => {
             addVideoMap(data);
             if (sortBy === '' && category === ''  && search === '') SetFreeGames(data);
             if (search !== '') {
@@ -64,6 +69,7 @@ const GameContainer = () => {
 
     // event functions
     const onClickSelect = (game) => SetSelectedGame(game);
+    const onClickCancel = () => SetSelectedCancel(!selectCancel);
 
     return (
         <>
@@ -75,6 +81,7 @@ const GameContainer = () => {
                 imageRef={imageRef}
                 selectedGame={selectedGame}
                 onClickSelect={onClickSelect}
+                onClickCancel={onClickCancel}
             />
         </>
     )

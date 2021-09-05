@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import GameItem from './GameItem';
 
-const GameList = ({ selectedGame, onClickSelect, freeGames, freeSortGames, videoRef, imageRef }) => {
+const GameList = ({ selectedGame, onClickSelect, onClickCancel, freeGames, freeSortGames, videoRef, imageRef }) => {
 
     const games = freeSortGames.length === 0 ? freeGames : freeSortGames;
 
@@ -28,13 +28,14 @@ const GameList = ({ selectedGame, onClickSelect, freeGames, freeSortGames, video
                     key={index} 
                     selectedGame={selectedGame} 
                     onClickSelect={onClickSelect}
+                    onClickCancel={onClickCancel}
                     videoRef={videoRef}
                     imageRef={imageRef}
                 />
     });
 
     const listStyle = {
-        marginTop: '25vh'
+        marginTop: '27.5vh'
     }
 
     return (

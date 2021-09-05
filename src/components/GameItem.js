@@ -1,7 +1,7 @@
 import React from 'react';
 import GameDetail from './GameDetail';
 
-const GameItem = ({ game, selectedGame, onClickSelect, videoRef, imageRef }) => {
+const GameItem = ({ game, selectedGame, onClickSelect, onClickCancel, videoRef, imageRef }) => {
     
     const handleClickOrHover = () => {
         onClickSelect(game)
@@ -46,7 +46,7 @@ const GameItem = ({ game, selectedGame, onClickSelect, videoRef, imageRef }) => 
     return (
         <div onClick={handleClickOrHover}>
             {
-                selectedGame === game ? <GameDetail selectedGame={selectedGame} videoRef={videoRef} imageRef={imageRef} /> : 
+                selectedGame === game ? <GameDetail selectedGame={selectedGame} onClickCancel={onClickCancel} videoRef={videoRef} imageRef={imageRef} /> : 
                 <li style={styleList}>
                     <img style={imgStyle} alt={game.title} src={game.thumbnail} height='50px'></img>
                     <div style={titleStyle}>{game.title}</div>
