@@ -1,11 +1,11 @@
 import React from 'react';
 
-const GameQueryOptions = ({ SetSortBy, SetCategory }) => {
+const GameQueryOptions = ({ search, SetSearch, SetSortBy, SetCategory, onChangeSearch }) => {
 
     const onChangeSort = e => SetSortBy(e.target.value);
     const onChangeCategory = e => SetCategory(e.target.value);
 
-    const sortByArr = ['release-date', 'popularity', 'alphabetical']
+    const sortByArr = ['alphabetical', 'popularity', 'relevance', 'release-date']
     const categoryArr = ['mmorpg', 'shooter', 'strategy', 'moba', 'racing', 'sports',
         'social', 'sandbox', 'open-world', 'survival', 'pvp', 'pve', 'pixel', 'voxel', 'zombie',
         'turn-based', 'first-person', 'third-Person', 'top-down', 'tank', 'space', 'sailing', 
@@ -19,17 +19,25 @@ const GameQueryOptions = ({ SetSortBy, SetCategory }) => {
         right: '2rem'
     }
 
+    const handleChange = (e) => {
+        SetSearch(e.target.value);
+    }
+
+    // sort-by category input
+    // smallImage name releasedate category
+
     return (
         <>
             <div style={styleFixed}>
+                <input type='text' value={search} onChange={handleChange} />
                 <select onChange={onChangeSort}>
-                    <option value=''>Choose Sort-by</option>
+                    <option value=''>Sort-by:</option>
                     {sortByArr.map((sort, index) => {
                         return <option value={'sort-by=' + sort} key={index} >{sort}</option>
                     })}
                 </select>
                 <select onChange={onChangeCategory}>
-                    <option value=''>Choose category</option>
+                    <option value=''>Categories</option>
                     {categoryArr.map((category, index) => {
                         return <option value={'&category=' + category} key={index} >{category}</option>
                     })}

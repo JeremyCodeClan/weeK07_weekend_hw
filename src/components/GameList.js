@@ -1,18 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import GameItem from './GameItem';
 
-const GameList = ({ freeGames, videoRef, imageRef }) => {
+const GameList = ({ selectedGame, onClickSelect, freeGames, freeSortGames, videoRef, imageRef }) => {
 
-    const [selectedGame, SetSelectedGame] = useState(null);
+    const games = freeSortGames.length === 0 ? freeGames : freeSortGames;
 
     useEffect(() => {
         result()
     })
-
-    // event functions
-    const onHoverSelect = (game) => {
-        SetSelectedGame(game);
-    }
 
     const result = () => {
         if (imageRef.current) {
@@ -27,12 +22,12 @@ const GameList = ({ freeGames, videoRef, imageRef }) => {
         }, 500)
     }
 
-    const gameLists = freeGames.map((game, index) => {
+    const gameLists = games.map((game, index) => {
         return <GameItem 
                     game={game} 
                     key={index} 
                     selectedGame={selectedGame} 
-                    onHoverSelect={onHoverSelect}
+                    onClickSelect={onClickSelect}
                     videoRef={videoRef}
                     imageRef={imageRef}
                 />

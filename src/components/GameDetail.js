@@ -6,7 +6,7 @@ const GameDetail = ({ selectedGame, videoRef, imageRef }) => {
         <div>
             <h2>{selectedGame.title}</h2>
             <div>
-                <video controls width="500" loop ref={videoRef} className='disableView' >
+                <video controls width="500" height='281' loop ref={videoRef} className='disableView' >
                     <source ref={videoRef} src={selectedGame.videoUrl} type='video/webm'></source>
                 </video>
                 <img ref={imageRef} width="500" alt={selectedGame.name} src={selectedGame.thumbnail} className='disableView'></img>
