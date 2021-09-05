@@ -13,18 +13,26 @@ const GameContainer = () => {
     const [sortBy, SetSortBy] = useState('');
     const [category, SetCategory] = useState('');
     const [search, SetSearch] = useState('');
+    const [delaySearch, SetDelaySearch] = useState('');
 
     const videoRef = useRef('');
     const imageRef = useRef('');
 
     // api call request on conditions
-    useEffect(() => getSortFreeGames(sortBy, category, search), [])
     useEffect(() => {
-        if (sortBy === '' && category === '' && search === '') {getSortFreeGames([]); return;}
-        if (sortBy !== '' || category !== '' || search !== '') {
-            getSortFreeGames(sortBy, category, search);
+        // https://stackoverflow.com/questions/53071774/reactjs-delay-onchange-while-typing
+        // request delay api on purpose
+        const timeOutId = setTimeout(() => SetDelaySearch(search), 500);
+        return () => clearTimeout(timeOutId);
+      }, [search]);
+
+    useEffect(() => getSortFreeGames(sortBy, category, delaySearch), [])
+    useEffect(() => {
+        if (sortBy === '' && category === '' && delaySearch === '') {getSortFreeGames([]); return;}
+        if (sortBy !== '' || category !== '' || delaySearch !== '') {
+            getSortFreeGames(sortBy, category, delaySearch);
         }
-    }, [sortBy, category, search])
+    }, [sortBy, category, delaySearch])
     useEffect(() => {
         if (selectCancel === true) SetSelectedGame(null);
         SetSelectedGame(!selectedGame);
@@ -38,7 +46,7 @@ const GameContainer = () => {
         })}
 
     // get api function
-    const getSortFreeGames = (sortBy, category, search) => {
+    const getSortFreeGames = (sortBy, category, delaySearch) => {
         SetSelectedGame(null);
         fetch(`https://free-to-play-games-database.p.rapidapi.com/api/games?${sortBy}${category}`, 
         {   "method": "GET", 
@@ -48,18 +56,18 @@ const GameContainer = () => {
         .then(res => res.json())
         .then((data) => {
             addVideoMap(data);
-            if (sortBy === '' && category === ''  && search === '') SetFreeGames(data);
-            if (search !== '') {
+            if (sortBy === '' && category === ''  && delaySearch === '') SetFreeGames(data);
+            if (delaySearch !== '') {
                 let match = [];
                 const matchFnc = (gameLists) => {
                     match = gameLists.filter((game) => {
-                        const regex = new RegExp(`${search}`, "gi");
+                        const regex = new RegExp(`${delaySearch}`, "gi");
                         return game.title.match(regex);
                     })
                 }
                 matchFnc(data);
                 SetFreeSortGames(match);
-                SetSearch(search);
+                SetSearch(delaySearch);
             } else {
                 SetFreeSortGames(data);
             }
