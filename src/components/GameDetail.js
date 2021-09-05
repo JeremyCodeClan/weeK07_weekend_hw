@@ -1,5 +1,6 @@
 import React from 'react';
-import { AiFillCloseSquare } from "react-icons/ai";
+import { CgCloseO } from "react-icons/cg";
+import { FaGamepad } from "react-icons/fa";
 
 const GameDetail = ({ selectedGame, onClickCancel, videoRef, imageRef }) => {
 
@@ -33,11 +34,6 @@ const GameDetail = ({ selectedGame, onClickCancel, videoRef, imageRef }) => {
         width: '500px',
     }
 
-    const iconStyle = {
-        color: '#808080',
-        cursor: 'pointer',
-    }
-
     const titleStyle = {
         margin: '1rem 0',
         color: '#ff7878',
@@ -52,14 +48,38 @@ const GameDetail = ({ selectedGame, onClickCancel, videoRef, imageRef }) => {
         width: '500px'
     }
 
+    const iconBlock = {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+    }
+    const closeIcon = {
+        color: '#808080',
+        cursor: 'pointer',
+    }
+    const padIcon = {
+        marginTop: '0.20rem',
+        marginRight: '0.75rem',
+        color: '#ff8080',
+        cursor: 'pointer',
+    }
+
+    const textStyle = {
+        color: '#808080',
+        margin: '0.5rem 0'
+    }
+
     return (
         <div style={detailBlock}>
             <div style={detailStyle}>
                 <div style={titleBlock}>
                     <div style={titleStyle}>{selectedGame.title}</div>
-                    <div onClick={handleCancel}>
-                        <AiFillCloseSquare style={iconStyle} size={36}/>
+                    <div style={iconBlock}>
+                        <a href={selectedGame.game_url} target="blank"><FaGamepad style={padIcon} size={55} /></a>
+                        <CgCloseO onClick={handleCancel} style={closeIcon} size={34}/>
                     </div>
+
+                    
                 </div>
                 <div>
                     <video controls width="500" height='281' loop ref={videoRef} className='disableView' >
@@ -68,11 +88,11 @@ const GameDetail = ({ selectedGame, onClickCancel, videoRef, imageRef }) => {
                     <img ref={imageRef} width="500" alt={selectedGame.name} src={selectedGame.thumbnail} className='disableView'></img>
                 </div>
                 <div style={itemsStyle}>
-                    <div>Platform: {selectedGame.platform}</div>
-                    <div>Release Date: {selectedGame.release_date}</div>
-                    <div>Developer: {selectedGame.developer}</div>
-                    <div>Publisher: {selectedGame.publisher}</div>
-                    <div>Description: {selectedGame.short_description}</div>
+                    <div style={textStyle}>Platform: {selectedGame.platform}</div>
+                    <div style={textStyle}>Release Date: {selectedGame.release_date}</div>
+                    <div style={textStyle}>Developer: {selectedGame.developer}</div>
+                    <div style={textStyle}>Publisher: {selectedGame.publisher}</div>
+                    <div style={textStyle}>Description: {selectedGame.short_description}</div>
                 </div>
             </div>
         </div>
