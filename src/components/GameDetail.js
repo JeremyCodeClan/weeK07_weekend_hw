@@ -77,9 +77,7 @@ const GameDetail = ({ selectedGame, onClickCancel, videoRef, imageRef }) => {
                     <div style={iconBlock}>
                         <a href={selectedGame.game_url} target="blank"><FaGamepad style={padIcon} size={55} /></a>
                         <CgCloseO onClick={handleCancel} style={closeIcon} size={34}/>
-                    </div>
-
-                    
+                    </div>                    
                 </div>
                 <div>
                     <video controls width="500" height='281' loop ref={videoRef} className='disableView' >

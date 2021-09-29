@@ -27,7 +27,7 @@ const GameHeader = ({ search, SetSearch, SetSortBy, SetCategory }) => {
     return (
         <div style={headerStyle}>
             <div style={logoStyle}><a href='/'>Free To Play Games</a></div>
-            <GameQueryOptions search={search} SetSearch={SetSearch} SetSortBy={SetSortBy} SetCategory={SetCategory}  />
+            <GameQueryOptions search={search} SetSearch={SetSearch} SetSortBy={SetSortBy} SetCategory={SetCategory} />
         </div>
     )
 };

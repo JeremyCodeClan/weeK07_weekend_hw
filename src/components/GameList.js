@@ -1,12 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import GameItem from './GameItem';
+import NotFound from './NotFound';
 
-const GameList = ({ selectedGame, onClickSelect, onClickCancel, freeGames, freeSortGames, videoRef, imageRef }) => {
+const GameList = ({ delaySearch, category, selectedGame, onClickSelect, onClickCancel, freeGames, freeRefinedGames, videoRef, imageRef }) => {
 
-    const games = freeSortGames.length === 0 ? freeGames : freeSortGames;
+    const games = freeRefinedGames === null ? freeGames : freeRefinedGames;
 
     useEffect(() => {
-        result()
+        result();
     })
 
     const result = () => {
@@ -43,6 +44,9 @@ const GameList = ({ selectedGame, onClickSelect, onClickCancel, freeGames, freeS
             <ul>
                 {gameLists}
             </ul>
+            { (category !== '' || delaySearch !== '') && freeRefinedGames !== null && freeRefinedGames.length === 0 && 
+                <NotFound />
+            }
         </div>
 
     )
