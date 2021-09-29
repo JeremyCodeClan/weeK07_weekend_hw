@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/free_to_play_games/static/css/main.eddb4620.chunk.css",
+    "main.js": "/free_to_play_games/static/js/main.bec1a3a1.chunk.js",
+    "main.js.map": "/free_to_play_games/static/js/main.bec1a3a1.chunk.js.map",
+    "runtime-main.js": "/free_to_play_games/static/js/runtime-main.d42cacbf.js",
+    "runtime-main.js.map": "/free_to_play_games/static/js/runtime-main.d42cacbf.js.map",
+    "static/js/2.db10aeb5.chunk.js": "/free_to_play_games/static/js/2.db10aeb5.chunk.js",
+    "static/js/2.db10aeb5.chunk.js.map": "/free_to_play_games/static/js/2.db10aeb5.chunk.js.map",
+    "static/js/3.0c8eb444.chunk.js": "/free_to_play_games/static/js/3.0c8eb444.chunk.js",
+    "static/js/3.0c8eb444.chunk.js.map": "/free_to_play_games/static/js/3.0c8eb444.chunk.js.map",
+    "index.html": "/free_to_play_games/index.html",
+    "static/css/main.eddb4620.chunk.css.map": "/free_to_play_games/static/css/main.eddb4620.chunk.css.map",
+    "static/js/2.db10aeb5.chunk.js.LICENSE.txt": "/free_to_play_games/static/js/2.db10aeb5.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d42cacbf.js",
+    "static/js/2.db10aeb5.chunk.js",
+    "static/css/main.eddb4620.chunk.css",
+    "static/js/main.bec1a3a1.chunk.js"
+  ]
+}
