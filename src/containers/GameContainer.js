@@ -61,11 +61,12 @@ const GameContainer = () => {
 
     const categoryFnc = (category) => {
         const newGames = [...freeGames];
+        console.log(newGames);
         if (category === '') { 
             SetFreeRefinedGames(newGames);
             return;
         }
-        const result = newGames.filter((game) => { 
+        const result = newGames.filter((game) => {
             return game.genre.toLowerCase() === category.toLowerCase()
         });
         result.length !== 0 ? SetFreeRefinedGames(result) : SetFreeRefinedGames([])
@@ -89,28 +90,23 @@ const GameContainer = () => {
     }
 
     const onChangeSearch = () => {
-        if (freeGames !== [] && freeRefinedGames !== null && delaySearch !== '') {
-            let match = [];
-            const matchFnc = (gameLists) => {
-                match = gameLists.filter((game) => {
-                    return game.title.toLocaleLowerCase().includes(delaySearch.toLocaleLowerCase());
-                })
-            }
+        let match = [];
+        const matchFnc = (gameLists) => {
+            match = gameLists.filter((game) => {
+                return game.title.toLocaleLowerCase().includes(delaySearch.toLocaleLowerCase());
+            })
+        }
+        if (category === '' && freeGames !== [] && freeRefinedGames !== null && delaySearch !== '') { 
             matchFnc(freeGames);
             SetFreeRefinedGames(match);
-        } else {
-            SetFreeRefinedGames(freeGames);
+            return;
         }
+        SetFreeRefinedGames(freeGames);
     }
 
     // event functions
     const onClickSelect = (game) => SetSelectedGame(game);
     const onClickCancel = () => SetSelectedCancel(!selectCancel);
-
-    if (freeRefinedGames !== null && freeRefinedGames.length !== 0) {
-        console.log(freeRefinedGames)
-    }
-
 
     return (
         <>
