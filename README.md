@@ -8,7 +8,7 @@ Free_To_Play allows you to search for available free games on Epicgames through 
 [[Go to Free_To_Play]](https://jeremyoo.github.io/free_to_play_games/)
 
 
-<img src = "./src/static/example_1.gif" width ="400" /> <img src = "./src/static/example_2.gif" width ="400" />
+<img src = "./src/static/example_1.gif" width ="450" /> <img src = "./src/static/example_2.gif" width ="450" />
 
 </div>
 
@@ -27,12 +27,12 @@ Free_To_Play allows you to search for available free games on Epicgames through 
 To deploy this project run
 
 ```bash
-- Your local machine terminal:
--- git clone https://github.com/jeremyoo/free_to_play_games.git
--- npm install
--- npm start
+Your local machine terminal:
+- git clone https://github.com/jeremyoo/free_to_play_games.git
+- npm install
+- npm start
 
-- *** Get api Key from https://www.freetogame.com/api-doc ***
+*** Get api Key from https://www.freetogame.com/api-doc ***
 - Save the api key in .env file
 ```
 
