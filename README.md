@@ -8,7 +8,7 @@ Free_To_Play allows you to search for available free games on Epicgames through 
 [[Go to Free_To_Play]](https://jeremyoo.github.io/free_to_play_games/)
 
 
-<img src = "./src/static/example_1.gif" width ="450" /> <img src = "./src/static/example_2.gif" width ="450" />
+<img src = "./src/static/example_1.gif" width ="400" /> <img src = "./src/static/example_2.gif" width ="400" />
 
 </div>
 
@@ -35,6 +35,14 @@ Your local machine terminal:
 *** Get api Key from https://www.freetogame.com/api-doc ***
 - Save the api key in .env file
 ```
+
+## Technology
+- Node.js
+- React.js
+- MongoDB
+- CSS3
+- PostgreSQL & psycopg library
+- *OpenAPI https://www.freetogame.com/api-doc
 
 ## Issue
 Please submit any issue through following link [[Free_To_Play Issue]](https://github.com/jeremyoo/free_to_play_games/issues).
