@@ -22,11 +22,19 @@ Free_To_Play allows you to search for available free games on Epicgames through 
     - release-date
     - categories
         
-## Exmaples
-<div align="center">
-<!--     <img width="300" src="./src/static/banner/example_1.png"> -->
-<!--     <img width="300" src="./src/static/banner/example_2.png"> -->
-</div>
+## Deployment
+
+To deploy this project run
+
+```bash
+- Your local machine terminal:
+-- git clone https://github.com/jeremyoo/free_to_play_games.git
+-- npm install
+-- npm start
+
+- *** Get api Key from https://www.freetogame.com/api-doc ***
+- Save the api key in .env file
+```
 
 ## Issue
 Please submit any issue through following link [[Free_To_Play Issue]](https://github.com/jeremyoo/free_to_play_games/issues).
