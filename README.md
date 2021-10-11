@@ -8,7 +8,7 @@ Free_To_Play allows you to search for available free games on Epicgames through 
 [[Go to Free_To_Play]](https://jeremyoo.github.io/free_to_play_games/)
 
 
-<!-- <img src = "./src/static/example2.gif" width ="300" /> <img src = "./src/static/example1.gif" width ="300" /> -->
+<img src = "./src/static/example_1.gif" width ="300" /> <img src = "./src/static/example_2.gif" width ="300" />
 
 </div>
 
